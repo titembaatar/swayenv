@@ -2,8 +2,6 @@ package config
 
 import (
 	"fmt"
-	"os"
-	"path/filepath"
 	"regexp"
 	"strings"
 )
@@ -23,7 +21,7 @@ type AppConfig struct {
 	ID          string   `toml:"id"`
 	Command     string   `toml:"cmd,omitempty"`
 	Size        int      `toml:"size,omitempty"`
-	Delay       int      `toml:"size,omitempty"`
+	Delay       int      `toml:"delay,omitempty"`
 	PostCommand []string `toml:"post_cmd,omitempty"`
 }
 
@@ -112,31 +110,5 @@ func (a *AppConfig) validate() error {
 		return fmt.Errorf("id is required")
 	}
 
-	if a.Command == "" && !a.isDesktopEntry() {
-		return fmt.Errorf("no match with desktop entries. Provide a command to launch it")
-	}
-
 	return nil
-}
-
-func (a *AppConfig) isDesktopEntry() bool {
-	homeDir, _ := os.UserHomeDir()
-	desktopEntryDirs := []string{
-		"/usr/share/applications",
-		"/usr/local/share/applications",
-		filepath.Join(homeDir, ".local/share/applications"),
-	}
-
-	for _, dir := range desktopEntryDirs {
-		if _, err := os.Stat(dir); os.IsNotExist(err) {
-			continue
-		}
-
-		desktopFile := filepath.Join(dir, a.ID+".desktop")
-		if _, err := os.Stat(desktopFile); err == nil {
-			return true
-		}
-	}
-
-	return false
 }
