@@ -1,0 +1,32 @@
+# Define workspaces with their representations
+[workspace.1]
+representation = "H[T[tmux browser-code]]"
+
+[workspace.2]
+representation = "H[discord V[browser-work kitty-work]]"
+
+# Define apps with their properties and commands
+[app.tmux]
+id = "tmux"
+cmd = "kitty --app-id tmux -e tmux"
+size = 70
+post_cmd = ["wtype -M ctrl sr"]
+
+[app.browser-code]
+id = "firefox"
+cmd = "firefox --new-window github.com"
+
+[app.discord]
+id = "discord"
+cmd = "gtk-launch discord"
+size = 30
+
+[app.browser-work]
+id = "firefox"
+cmd = "firefox --new-window studio.youtube.com"
+size = 70
+
+[app.kitty-work]
+id = "yesugei"
+cmd = "kitty --app-id yesugei -d /mnt/yesugei/"
+
