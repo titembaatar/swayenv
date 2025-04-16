@@ -20,6 +20,7 @@ cmd = "firefox --new-window github.com"
 id = "discord"
 cmd = "gtk-launch discord"
 size = 30
+delay = 3
 
 [app.browser-work]
 id = "firefox"

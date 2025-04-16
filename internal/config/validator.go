@@ -23,6 +23,7 @@ type AppConfig struct {
 	ID          string   `toml:"id"`
 	Command     string   `toml:"cmd,omitempty"`
 	Size        int      `toml:"size,omitempty"`
+	Delay       int      `toml:"size,omitempty"`
 	PostCommand []string `toml:"post_cmd,omitempty"`
 }
 
