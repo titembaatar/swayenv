@@ -17,8 +17,8 @@ type WorkspaceConfig struct {
 }
 
 type AppConfig struct {
-	Name        string   `toml:"-"`
-	ID          string   `toml:"id"`
+	Mark        string   `toml:"-"`
+	Name        string   `toml:"name"`
 	Command     string   `toml:"cmd,omitempty"`
 	Size        int      `toml:"size,omitempty"`
 	Delay       int      `toml:"delay,omitempty"`
@@ -106,8 +106,8 @@ func (w *WorkspaceConfig) validateAppsName(c *Config) error {
 }
 
 func (a *AppConfig) validate() error {
-	if a.ID == "" {
-		return fmt.Errorf("id is required")
+	if a.Name == "" && a.Command == "" {
+		return fmt.Errorf("app require a name OR a command")
 	}
 
 	return nil

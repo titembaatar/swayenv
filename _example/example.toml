@@ -3,31 +3,31 @@
 representation = "H[T[tmux browser-code]]"
 
 [workspace.2]
-representation = "H[discord V[browser-work kitty-work]]"
+representation = "H[discord V[browser-work yesugei]]"
 
 # Define apps with their properties and commands
 [app.tmux]
-id = "tmux"
-cmd = "kitty --app-id tmux -e tmux"
+name = "kitty" # should be the desktop entry name w/o `.desktop`
+cmd = "kitty -e tmux"
 size = 70
 post_cmd = ["wtype -M ctrl sr"]
 
 [app.browser-code]
-id = "firefox"
+name = "firefox"
 cmd = "firefox --new-window github.com"
 
 [app.discord]
-id = "discord"
-cmd = "gtk-launch discord"
+name = "discord"
+cmd = "gtk-launch discord" # optional because name identical to gtk-launch
 size = 30
 delay = 3
 
 [app.browser-work]
-id = "firefox"
+name = "firefox"
 cmd = "firefox --new-window studio.youtube.com"
 size = 70
 
-[app.kitty-work]
-id = "yesugei"
-cmd = "kitty --app-id yesugei -d /mnt/yesugei/"
+[app.yesugei]
+name = "kitty"
+cmd = "kitty -d /mnt/yesugei/"
 
